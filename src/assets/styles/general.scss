@@ -113,8 +113,12 @@ i {
 }
 
 //spaces
-.content {
-  padding: 0px 120px 0px;
+.my-1 {
+  margin: 8px 0px;
+}
+
+.mt-1 {
+  margin-top: 8px;
 }
 
 //sizes
@@ -136,6 +140,11 @@ i {
 .text-center {
   text-align: center;
 }
+
+.bold {
+  font-weight: bold;
+}
+
 .form-wrapper{
   text-align: right;
   input{
