@@ -1,27 +1,36 @@
-import React, { useState } from "react";
-import { Form, Input, Button, Typography, Row, Col, Spin } from "antd";
+import React, { useEffect } from "react";
+import { Form, Input, Button, Typography } from "antd";
 import { StyledCard } from "./phonecheck.styled";
-import { useNavigate } from "react-router-dom";
-import { ReloadOutlined } from "@ant-design/icons";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "redux/slices/user/slice";
+import { useAppSelector } from "redux/store";
+import Notification from "components/container/Notification";
 
 const Login: React.FC = () => {
 	const navigate = useNavigate();
-	const [isLoading, setIsLoading] = useState(false);
-	const [disabled, setDisabled] = useState(false);
+	const dispatch = useDispatch();
+	const notification = useAppSelector((state) => state.notification);
 
-	const onResend = () => {
-		setIsLoading(true);
-		setTimeout(() => {
-			setIsLoading(false);
-		}, 1000);
-		setDisabled(true);
-		setTimeout(() => {
-			setDisabled(false);
-		}, 2 * 60000);
-	};
+	useEffect(() => {
+		const notificationProps = {
+			type: "success",
+			description: notification.message,
+			key: "message",
+			config: {
+				duration: 5,
+				rtl: true,
+				placement: "topLeft",
+			},
+		};
+		Notification(notificationProps);
+		if (notification.isSuccessful) {
+			navigate("/dashboard");
+		}
+	}, [notification, navigate]);
 
 	const onFinish = (values: any) => {
-		navigate("set-password");
+		dispatch(login(values));
 	};
 
 	return (
@@ -33,41 +42,35 @@ const Login: React.FC = () => {
 			}
 			bordered={false}
 		>
-			<Spin spinning={isLoading}>
-				<Typography.Text>ارسال کد به شماره همراه ۰۹۱۲۳۴۶۳۳۲۱</Typography.Text>
-				<Form
-					name="basic"
-          labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }}
-					onFinish={onFinish}
-					autoComplete="off"
-          className="form-wrapper"
+			<Form
+				name="basic"
+				labelCol={{ span: 24 }}
+				wrapperCol={{ span: 24 }}
+				onFinish={onFinish}
+				autoComplete="off"
+				className="form-wrapper"
+			>
+				<Form.Item
+					label="شماره موبایل"
+					name="phoneNumber"
+					rules={[{ required: true, message: "ورود شماره موبایل الزامی است" }]}
 				>
-          	<Form.Item
-								label="شماره موبایل"
-								name="phone_number"
-								// rules={[
-								// 	{ required: true, message: "شماره موبایل نمیتواند خالی باشد" },
-								// ]}
-							>
-								<Input type="number" />
-							</Form.Item>
-              <Form.Item
-								label="رمز عبور"
-								name="phone_number"
-								// rules={[
-								// 	{ required: true, message: "شماره موبایل نمیتواند خالی باشد" },
-								// ]}
-							>
-								<Input.Password />
-							</Form.Item>
-					<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-						<Button type="primary" htmlType="submit">
-							ثبت
-						</Button>
-					</Form.Item>
-				</Form>
-			</Spin>
+					<Input type="number" />
+				</Form.Item>
+				<Form.Item
+					label="رمز عبور"
+					name="password"
+					rules={[{ required: true, message: "ورود رمز عبور الزامی است" }]}
+				>
+					<Input.Password />
+				</Form.Item>
+				<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+					<Button type="primary" htmlType="submit">
+						ثبت
+					</Button>
+				</Form.Item>
+				حساب کاربری ندارید؟ <NavLink to="/signup">ثبت نام کنید</NavLink>
+			</Form>
 		</StyledCard>
 	);
 };

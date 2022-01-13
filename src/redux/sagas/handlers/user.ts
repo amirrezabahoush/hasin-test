@@ -1,16 +1,17 @@
 import { call, put } from "redux-saga/effects";
-import { setUserID } from "../../slices/user/slice";
+import { setUser } from "../../slices/user/slice";
 import { setMessage } from "../../slices/notification/slice";
-import { register } from "services/Auth/SignUp";
+import { getUser } from "services/Dashboard";
 import { sleep } from "utils/helpers";
 
-export function* handleRegister(action: any) {
+export function* handleGetUser(action: any) {
   try {
-    const response = call(() => register(action.payload.user));
+    debugger
+    const response = call(() => getUser());
     const { data } = yield response;
-    yield put(setUserID(data.payload.id));
+    yield put(setUser(data.payload));
     yield put(setMessage({message: data.message, isSuccessful: data.isSuccessful}));
-    sleep(500);
+    sleep(1500);
 		yield put(setMessage({ message: "", isSuccessful: false }));
   } catch (error) {
     console.log(error);

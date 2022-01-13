@@ -9,10 +9,7 @@ const AcceptCode = createSlice({
   initialState: state,
   reducers: {
     getCode(state, action) {},
-    sendCode(state, action) {
-      const userData = action.payload;
-      return { ...state, user:{...userData} };
-    }
+    sendCode(state, action) {}
   }
 });
 

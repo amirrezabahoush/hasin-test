@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Form, Select, InputNumber, Input, Button, Typography } from "antd";
+import { Form, Select, Input, Button, Typography } from "antd";
 import { StyledCard } from "./login.styled";
 import { useNavigate } from "react-router-dom";
 import { sendUserData } from "redux/slices/user/slice";
@@ -68,7 +68,7 @@ const Login: React.FC = () => {
 					name="merchantCode"
 					rules={[{ required: true, message: "ثبت کد ملی الزامی است" }]}
 				>
-					<Input type="number" />
+					<Input />
 				</Form.Item>
 
 				<Form.Item
@@ -76,7 +76,7 @@ const Login: React.FC = () => {
 					name="phoneNumber"
 					rules={[{ required: true, message: "ثبت شماره همراه الزامی است" }]}
 				>
-					<InputNumber className="w-100" />
+					<Input className="w-100" />
 				</Form.Item>
 
 				<Form.Item

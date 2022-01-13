@@ -1,20 +1,29 @@
 import React from "react";
-import { Form, Input, Button, Typography, Row, Col } from "antd";
+import { Form, Input, Button, Typography } from "antd";
 import { StyledCard } from "./setpassword.styled";
 import { useNavigate } from "react-router-dom";
+import { setPassword } from "redux/slices/user/slice";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "redux/store";
 
 const SetPassword: React.FC = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const user = useAppSelector((state) => state.user);
 
 	const onFinish = (values: any) => {
-		navigate("/signup/login");
+		const { password, repeatPassword } = values;
+		if(password === repeatPassword) {
+			dispatch(setPassword({id: user.id, password: password}));
+		}
+		navigate("/login");
 	};
 
 	return (
 		<StyledCard
 			title={
 				<Typography.Title level={4} className="text-center">
-					رمز عبور
+					انتخاب رمز عبور
 				</Typography.Title>
 			}
 			bordered={false}
@@ -27,27 +36,20 @@ const SetPassword: React.FC = () => {
 				autoComplete="off"
 				className="form-wrapper"
 			>
-					<Form.Item
-							label="رمز عبور را وارد کنید"
-							name="password"
-							// rules={[
-							// 	{ required: true, message: "رمز عبور نمی تواند خالی باشد" },
-							// ]}
-						>
-							<Input type="number" />
-						</Form.Item>
-						<Form.Item
-							label="تکرار رمز عبور را وارد کنید"
-							name="re_password"
-							// rules={[
-							// 	{
-							// 		required: true,
-							// 		message: "تکرار رمز عبور نمی تواند خالی باشد",
-							// 	},
-							// ]}
-						>
-							<Input type="number" />
-						</Form.Item>
+				<Form.Item
+					label="رمز عبور را وارد کنید"
+					name="password"
+					rules={[{ required: true, message: "رمز عبور نمی تواند خالی باشد" }]}
+				>
+					<Input />
+				</Form.Item>
+				<Form.Item
+					label="تکرار رمز عبور را وارد کنید"
+					name="repeatPassword"
+					rules={[{required: true, message: "تکرار رمز عبور نمی تواند خالی باشد"}]}
+				>
+					<Input />
+				</Form.Item>
 				<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
 					<Button type="primary" htmlType="submit">
 						ثبت

@@ -7,7 +7,9 @@ const api = ({
 	headers,
 	params,
 	data,
-}: AxiosRequestConfig): AxiosPromise => {
+	withCredentials = false,
+	auth
+}: AxiosRequestConfig): AxiosPromise => {	
 	return axios({
 		baseURL: process.env.REACT_APP_BASE_URL,
 		url,
@@ -16,6 +18,8 @@ const api = ({
 		headers,
 		params,
 		data,
+		withCredentials,
+		auth
 	});
 };
 
