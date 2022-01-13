@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { Form, Input, Button, Typography } from "antd";
-import { StyledCard } from "./phonecheck.styled";
+import { Form, Input } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "redux/slices/user/slice";
 import { useAppSelector } from "redux/store";
+import { AuthForm } from "components/container";
+import { LoginValues } from "./SetPassword.props";
+import Regex from "utils/regex";
 
 const Login: React.FC = () => {
 	const navigate = useNavigate();
@@ -17,49 +19,36 @@ const Login: React.FC = () => {
 		}
 	}, [notification, navigate]);
 
-	const onFinish = (values: any) => {
+	const onFinish = (values: LoginValues) => {
 		dispatch(login(values));
 	};
 
 	return (
-		<StyledCard
-			title={
-				<Typography.Title level={4} className="text-center">
-					ورود
-				</Typography.Title>
-			}
-			bordered={false}
-		>
-			<Form
-				name="basic"
-				labelCol={{ span: 24 }}
-				wrapperCol={{ span: 24 }}
-				onFinish={onFinish}
-				autoComplete="off"
-				className="form-wrapper"
+		<AuthForm submitText="ثبت" onFinish={onFinish} title="ورود">
+			<Form.Item
+				label="شماره موبایل"
+				name="phoneNumber"
+				rules={[
+					{ required: true, message: "ورود شماره موبایل الزامی است" },
+					{
+						pattern: Regex.mobileNumber,
+						message: " فرمت شماره همراه وارد شده صحیح نمی باشد",
+					},
+				]}
 			>
-				<Form.Item
-					label="شماره موبایل"
-					name="phoneNumber"
-					rules={[{ required: true, message: "ورود شماره موبایل الزامی است" }]}
-				>
-					<Input type="number" />
-				</Form.Item>
-				<Form.Item
-					label="رمز عبور"
-					name="password"
-					rules={[{ required: true, message: "ورود رمز عبور الزامی است" }]}
-				>
-					<Input.Password />
-				</Form.Item>
-				<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-					<Button type="primary" htmlType="submit">
-						ثبت
-					</Button>
-				</Form.Item>
-				حساب کاربری ندارید؟ <NavLink to="/signup">ثبت نام کنید</NavLink>
-			</Form>
-		</StyledCard>
+				<Input type="number" />
+			</Form.Item>
+			<Form.Item
+				label="رمز عبور"
+				name="password"
+				rules={[
+					{ required: true, message: "ورود رمز عبور الزامی است" }
+				]}
+			>
+				<Input.Password />
+			</Form.Item>
+			حساب کاربری ندارید؟ <NavLink to="/signup">ثبت نام کنید</NavLink>
+		</AuthForm>
 	);
 };
 

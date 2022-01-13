@@ -1,30 +1,47 @@
-import React, { useEffect,useCallback } from "react";
-import { Typography } from "antd";
+import React from "react";
+import { Typography, Table } from "antd";
 import { StyledCard } from "./dashboard.styled";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getUser } from "redux/slices/user/slice";
-import { useAppSelector } from "redux/store";
 
 const Dashboard: React.FC = () => {
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
-	const notification = useAppSelector((state) => state.notification);
-	const userDetails = useAppSelector((state) => state.user.details);
 
-	console.log(userDetails);
-	
-	const getUserDetails = useCallback(
-		() => {
-			dispatch(getUser());
+	const columns = [
+		{
+			title: 'ردیف',
+			dataIndex: 'row',
+			key: 'row',
 		},
-		[dispatch, getUser],
-	)
-
-	useEffect(() => {
-		getUserDetails();
-	}, [getUserDetails]);
-
+		{
+			title: 'نوع کاربر',
+			dataIndex: 'userType',
+			key: 'userType',
+		},
+		{
+			title: 'کد ملی',
+			dataIndex: 'nationalId',
+			key: 'nationalId',
+		},
+		{
+			title: 'شماره همراه',
+			dataIndex: 'mobile',
+			key: 'mobile',
+		},
+		{
+			title: 'ایمیل',
+			dataIndex: 'email',
+			key: 'email',
+		},
+	];
+	
+	const dataSource = [
+		{
+			row: '1',
+			userType: 'ایرانی',
+			nationalId: '0014202077',
+			mobile: '09121234567',
+			email: 's.k@gmail.com'
+		}
+	];
 
 	return (
 		<StyledCard
@@ -35,7 +52,12 @@ const Dashboard: React.FC = () => {
 			}
 			bordered={false}
 		>
-
+			<Table
+				dataSource={dataSource}
+				columns={columns}
+				pagination={false}
+				scroll={{ x: 240 }}
+			/>
 		</StyledCard>
 	);
 };

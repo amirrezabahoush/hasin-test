@@ -1,5 +1,6 @@
 const butInstall = document.getElementById('butInstall');
 
+//we can add app.js in index.html instead of loading sw.js directly for manual installing
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js', { scope: './' }).then(() => {
     console.log('service worker registered.!');
@@ -25,5 +26,5 @@ butInstall.addEventListener('click', (event) => {
 window.addEventListener('appinstalled', (event) => {
   console.log('👍', 'appinstalled', event);
   // Clear the window.deferredPrompt so it can be garbage collected
-  window.window.deferredPrompt = null;
+  window.deferredPrompt = null;
 });

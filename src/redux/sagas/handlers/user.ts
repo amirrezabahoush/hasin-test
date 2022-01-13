@@ -6,7 +6,6 @@ import { sleep } from "utils/helpers";
 
 export function* handleGetUser(action: any) {
   try {
-    debugger
     const response = call(() => getUser());
     const { data } = yield response;
     yield put(setUser(data.payload));

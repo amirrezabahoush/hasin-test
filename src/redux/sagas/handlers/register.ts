@@ -6,7 +6,7 @@ import { sleep } from "utils/helpers";
 
 export function* handleRegister(action: any) {
   try {
-    const response = call(() => register(action.payload.user));
+    const response = call(() => register(action.payload));
     const { data } = yield response;
     yield put(setUserID(data.payload.id));
     yield put(setMessage({message: data.message, isSuccessful: data.isSuccessful}));

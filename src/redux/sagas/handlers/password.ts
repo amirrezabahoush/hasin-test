@@ -5,7 +5,6 @@ import { sleep } from "utils/helpers";
 
 export function* handleSetPassword(action: any) {
   try {
-    debugger
     const response = call(() => sendPassword(action.payload));
     const { data } = yield response;
     yield put(setMessage({message: data.message, isSuccessful: data.isSuccessful}));
