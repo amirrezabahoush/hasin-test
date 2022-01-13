@@ -5,7 +5,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "redux/slices/user/slice";
 import { useAppSelector } from "redux/store";
-import Notification from "components/container/Notification";
 
 const Login: React.FC = () => {
 	const navigate = useNavigate();
@@ -13,17 +12,6 @@ const Login: React.FC = () => {
 	const notification = useAppSelector((state) => state.notification);
 
 	useEffect(() => {
-		const notificationProps = {
-			type: "success",
-			description: notification.message,
-			key: "message",
-			config: {
-				duration: 5,
-				rtl: true,
-				placement: "topLeft",
-			},
-		};
-		Notification(notificationProps);
 		if (notification.isSuccessful) {
 			navigate("/dashboard");
 		}

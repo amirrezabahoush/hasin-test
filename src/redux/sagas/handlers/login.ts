@@ -1,7 +1,7 @@
 import { call, put } from "redux-saga/effects";
 import { setMessage } from "../../slices/notification/slice";
 import { sendLoginData } from "services/Auth/SignUp";
-// import { sleep } from "utils/helpers";
+import Notification from "components/container/Notification";
 
 export function* handleLogin(action: any) {
 	try {
@@ -13,8 +13,17 @@ export function* handleLogin(action: any) {
 				setMessage({ message: "ورود موفقیت آمیز", isSuccessful: true })
 			);
 		}
-		// sleep(2000);
-		// yield put(setMessage({ message: "", isSuccessful: false }));
+		const notificationProps = {
+			type: "success",
+			description: "ورود موفقیت آمیز",
+			key: "message",
+			config: {
+				duration: 5,
+				rtl: true,
+				placement: "topLeft",
+			},
+		};
+		Notification(notificationProps);
 	} catch (error) {
 		console.log(error);
 	}

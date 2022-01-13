@@ -13,7 +13,6 @@ import "./assets/styles/general.scss";
 import { BrowserRouter } from "react-router-dom";
 //main components
 import App from "./App";
-import { register } from './serviceWorker';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -28,4 +27,4 @@ ReactDOM.render(
 	document.getElementById("root")
 );
 
-register();
+// register();
