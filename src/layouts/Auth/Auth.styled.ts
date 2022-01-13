@@ -4,7 +4,6 @@ import { Card } from "antd";
 export const StyledDiv = styled.div`
   width: 100vw;
   height: 100vh;
-  background: #fdfafa;
 `;
 export const StyledWrapper = styled.div`
 	height: 100vh;
@@ -17,6 +16,7 @@ export const StyledCard = styled(Card)`
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background: #e5d7ff;
+	border:solid 1px #D4D4D4;
+	border-radius:5px;
   box-shadow: 0px 4px 12px -5px #000;
 `;

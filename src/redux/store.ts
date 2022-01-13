@@ -6,6 +6,8 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import user from 'redux/slices/user/slice';
+import notification from 'redux/slices/notification/slice';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -20,7 +22,8 @@ if (process.env.NODE_ENV === "development") {
 }
 
 const reducers = combineReducers({
-  
+  user,
+  notification
 });
 
 const persistConfig = {

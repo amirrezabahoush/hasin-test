@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Select, InputNumber, Input, Button, Typography } from "antd";
 import { StyledCard } from "./login.styled";
 import { useNavigate } from "react-router-dom";
+import { sendUserData } from "redux/slices/user/slice";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "redux/store";
+import Notification from "components/container/Notification";
 
 const Login: React.FC = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const notification = useAppSelector((state) => state.notification);
 
-	const onFinish = (values: any) => {
-		navigate("/signup/check-phone");
+	useEffect(() => {
+		if (notification.isSuccessful) {
+			const notificationProps = {
+				type: 'success',
+				description: notification.message,
+				key: 'message',
+				config: {
+					duration: 5,
+					rtl: true,
+					placement: 'topLeft',
+				},
+			};
+			Notification(notificationProps);
+			navigate("/signup/check-phone");
+		}
+	}, [notification, navigate]);
+
+	const onFinish = async (values: any) => {
+			dispatch(
+				sendUserData({ user: { ...values, phoneNumber: "09195187626" } })
+			);
 	};
 
 	return (
@@ -21,42 +46,43 @@ const Login: React.FC = () => {
 		>
 			<Form
 				name="basic"
-				labelCol={{ span: 8 }}
-				wrapperCol={{ span: 16 }}
+				labelCol={{ span: 24 }}
+				wrapperCol={{ span: 24 }}
 				onFinish={onFinish}
 				autoComplete="off"
+				className="form-wrapper"
 			>
 				<Form.Item
 					label="نوع کاربر"
-					name="user_type"
-					// rules={[{ required: true, message: "لطفا یک مورد را انتخاب کنید" }]}
+					name="nationality"
+					rules={[{ required: true, message: "انتخاب نوع کاربر الزامی است" }]}
 				>
 					<Select>
-						<Select.Option value="iranian">ایرانی</Select.Option>
-						<Select.Option value="foreiner">خارجی</Select.Option>
+						<Select.Option value="Iranian">ایرانی</Select.Option>
+						<Select.Option value="Foreigner">خارجی</Select.Option>
 					</Select>
 				</Form.Item>
 
 				<Form.Item
 					label="کد ملی"
-					name="national_code"
-					// rules={[{ required: true, message: "Please input your password!" }]}
+					name="merchantCode"
+					rules={[{ required: true, message: "ثبت کد ملی الزامی است" }]}
 				>
 					<Input type="number" />
 				</Form.Item>
 
 				<Form.Item
 					label="شماره همراه"
-					name="phone_number"
-					// rules={[{ required: true, message: "Please input your password!" }]}
+					name="phoneNumber"
+					rules={[{ required: true, message: "ثبت شماره همراه الزامی است" }]}
 				>
-					<InputNumber />
+					<InputNumber className="w-100" />
 				</Form.Item>
 
 				<Form.Item
 					label="ایمیل"
 					name="email"
-					// rules={[{ required: true, message: "Please input your password!" }]}
+					rules={[{ required: true, message: "ثبت ایمیل الزامی است" }]}
 				>
 					<Input type="email" />
 				</Form.Item>

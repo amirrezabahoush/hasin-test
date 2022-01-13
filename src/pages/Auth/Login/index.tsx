@@ -37,14 +37,13 @@ const Login: React.FC = () => {
 				<Typography.Text>ارسال کد به شماره همراه ۰۹۱۲۳۴۶۳۳۲۱</Typography.Text>
 				<Form
 					name="basic"
-					labelCol={{ span: 8 }}
-					wrapperCol={{ span: 16 }}
+          labelCol={{ span: 24 }}
+          wrapperCol={{ span: 24 }}
 					onFinish={onFinish}
 					autoComplete="off"
+          className="form-wrapper"
 				>
-					<Row>
-						<Col xs={16}>
-							<Form.Item
+          	<Form.Item
 								label="شماره موبایل"
 								name="phone_number"
 								// rules={[
@@ -53,10 +52,7 @@ const Login: React.FC = () => {
 							>
 								<Input type="number" />
 							</Form.Item>
-						</Col>
-
-						<Col xs={16}>
-							<Form.Item
+              <Form.Item
 								label="رمز عبور"
 								name="phone_number"
 								// rules={[
@@ -65,10 +61,6 @@ const Login: React.FC = () => {
 							>
 								<Input.Password />
 							</Form.Item>
-						</Col>
-
-					</Row>
-
 					<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
 						<Button type="primary" htmlType="submit">
 							ثبت

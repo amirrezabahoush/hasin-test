@@ -21,14 +21,13 @@ const SetPassword: React.FC = () => {
 		>
 			<Form
 				name="SetPassword"
-				labelCol={{ span: 8 }}
-				wrapperCol={{ span: 16 }}
+				labelCol={{ span: 24 }}
+				wrapperCol={{ span: 24 }}
 				onFinish={onFinish}
 				autoComplete="off"
+				className="form-wrapper"
 			>
-				<Row>
-					<Col xs={16}>
-						<Form.Item
+					<Form.Item
 							label="رمز عبور را وارد کنید"
 							name="password"
 							// rules={[
@@ -37,8 +36,6 @@ const SetPassword: React.FC = () => {
 						>
 							<Input type="number" />
 						</Form.Item>
-					</Col>
-					<Col xs={16}>
 						<Form.Item
 							label="تکرار رمز عبور را وارد کنید"
 							name="re_password"
@@ -51,9 +48,6 @@ const SetPassword: React.FC = () => {
 						>
 							<Input type="number" />
 						</Form.Item>
-					</Col>
-				</Row>
-
 				<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
 					<Button type="primary" htmlType="submit">
 						ثبت

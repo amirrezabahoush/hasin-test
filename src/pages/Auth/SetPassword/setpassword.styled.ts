@@ -7,6 +7,6 @@ export const StyledCard = styled(Card)`
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background: #e5d7ff;
+	border-radius:5px;
   box-shadow: 0px 4px 12px -5px #000;
 `;
