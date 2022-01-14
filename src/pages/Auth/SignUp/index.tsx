@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Form, Select, Input, Button } from "antd";
+import { Form, Select, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import { sendUserData } from "redux/slices/user/slice";
 import { useDispatch } from "react-redux";

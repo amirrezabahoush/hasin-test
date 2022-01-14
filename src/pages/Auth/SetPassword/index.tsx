@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "redux/store";
 import { AuthForm } from "components/container";
 import { SetPasswordValues } from "./SetPassword.props";
-import Regex from "utils/regex";
 
 const SetPassword: React.FC = () => {
 	const navigate = useNavigate();
