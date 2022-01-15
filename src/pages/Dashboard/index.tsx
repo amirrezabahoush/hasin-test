@@ -1,45 +1,23 @@
-import React from "react";
-import { Typography, Table, Row, Col } from "antd";
+import React, { useEffect, useCallback } from "react";
+import { Typography, Row, Col } from "antd";
 import { StyledCard } from "./dashboard.styled";
+import { useDispatch } from "react-redux";
+import { getUser } from "redux/slices/user/slice";
+import { useAppSelector } from "redux/store";
 
 const Dashboard: React.FC = () => {
-	const columns = [
-		{
-			title: "ردیف",
-			dataIndex: "row",
-			key: "row",
-		},
-		{
-			title: "نوع کاربر",
-			dataIndex: "userType",
-			key: "userType",
-		},
-		{
-			title: "کد ملی",
-			dataIndex: "nationalId",
-			key: "nationalId",
-		},
-		{
-			title: "شماره همراه",
-			dataIndex: "mobile",
-			key: "mobile",
-		},
-		{
-			title: "ایمیل",
-			dataIndex: "email",
-			key: "email",
-		},
-	];
+	const dispatch = useDispatch();
+	const user = useAppSelector((state) => state.user.details);
 
-	const dataSource = [
-		{
-			row: "1",
-			userType: "ایرانی",
-			nationalId: "0014202077",
-			mobile: "091212345127",
-			email: "s.k@gmail.com",
+	const getUserDetails = useCallback(
+		() => {
+			dispatch(getUser());
 		},
-	];
+		[dispatch]);
+
+	useEffect(() => {
+		getUserDetails();
+	}, [getUserDetails])
 
 	return (
 		<StyledCard
@@ -55,33 +33,27 @@ const Dashboard: React.FC = () => {
 					ملیت:
 				</Col>
 				<Col xs={12} className="mt-1">
-					ایرانی
+					{user.userType === 1 ? 'ایرانی' : 'خارجی'}
 				</Col>
 				<Col xs={12} className="bold my-1">
 					کد ملی:
 				</Col>
 				<Col xs={12} className="my-1">
-					0014202077
+					{user.mrcCode}
 				</Col>
 				<Col xs={12} className="bold my-1">
 					شماره همراه:
 				</Col>
 				<Col xs={12} className="my-1">
-					091212345127
+					{user.cellphone}
 				</Col>
 				<Col xs={12} className="bold my-1">
 					ایمیل:
 				</Col>
 				<Col xs={12} className="my-1">
-					s.k@gmail.com
+					{user.mail}
 				</Col>
 			</Row>
-			{/* <Table
-				dataSource={dataSource}
-				columns={columns}
-				pagination={false}
-				scroll={{ x: 240 }}
-			/> */}
 		</StyledCard>
 	);
 };
