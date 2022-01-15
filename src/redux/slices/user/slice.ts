@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { UserSchema } from "types";
 
-export const state = {
+export const state: UserSchema = {
 	id: "",
 	details: {
 		cellphone: "",
