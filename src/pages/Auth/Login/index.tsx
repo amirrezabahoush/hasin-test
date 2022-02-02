@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { login } from "redux/slices/user/slice";
 import { useAppSelector } from "redux/store";
 import { AuthForm } from "components/container";
-import { LoginValues } from "./SetPassword.props";
+import { LoginValues } from "./Login.props";
 import Regex from "utils/regex";
 
 const Login: React.FC = () => {

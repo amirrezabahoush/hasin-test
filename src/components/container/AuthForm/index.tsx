@@ -1,8 +1,12 @@
 import React from "react";
-import { Form,  Button, Typography } from "antd";
+import { Form, Button, Typography } from "antd";
 import { StyledCard } from "./AuthForm.styled";
 
-const AuthForm: React.FC<{title: string; onFinish(values: any): void; submitText: string;}> = props => {
+const AuthForm: React.FC<{
+	title: string;
+	onFinish(values: any): void;
+	submitText: string;
+}> = (props) => {
 	return (
 		<StyledCard
 			title={
@@ -20,7 +24,7 @@ const AuthForm: React.FC<{title: string; onFinish(values: any): void; submitText
 				autoComplete="off"
 				className="form-wrapper"
 			>
-        {props.children}
+				{props.children}
 
 				<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
 					<Button type="primary" htmlType="submit">
