@@ -1,50 +1,65 @@
 import React, { useEffect, useCallback } from "react";
-import { Row, Col } from "antd";
 import { useDispatch } from "react-redux";
-import { getUser } from "redux/slices/user/slice";
+import { getTickets } from "redux/slices/tickets/slice";
 import { useAppSelector } from "redux/store";
+import { StyledCard } from "pages/User/Profile/profile.styled";
+import { Table } from "antd";
 
 const Dashboard: React.FC = () => {
 	const dispatch = useDispatch();
-	const user = useAppSelector((state) => state.user.details);
+	const tickets = useAppSelector((state) => state.ticket.tickets);
 
-	const getUserDetails = useCallback(
+	const onGetTickets = useCallback(
 		() => {
-			dispatch(getUser());
+			dispatch(getTickets());
 		},
 		[dispatch]);
 
 	useEffect(() => {
-		getUserDetails();
-	}, [getUserDetails])
+		onGetTickets();
+	}, [onGetTickets]);
+
+	const columns = [
+		{
+			key: 'row',
+			dataIndex: 'row',
+			text: 'ردیف'
+		},
+		{
+			key: 'messageStatus',
+			dataIndex: 'messageStatus',
+			text: 'وضعیت'
+		},
+		{
+			key: 'message',
+			dataIndex: 'message',
+			text: 'پیام'
+		},
+		{
+			key: 'creationDate',
+			dataIndex: 'creationDate',
+			text: 'تاریخ ایجاد'
+		},
+		{
+			key: 'lastUpdate',
+			dataIndex: 'lastUpdate',
+			text: 'آخرین به روز رسانی'
+		},
+		{
+			key: 'addressLink',
+			dataIndex: 'addressLink',
+			text: 'لینک'
+		},
+	]
 
 	return (
-			<Row>
-				<Col xs={12} className="bold mt-1">
-					ملیت:
-				</Col>
-				<Col xs={12} className="mt-1">
-					{user.userType ? user.userType === 1 ? 'ایرانی' : 'خارجی' : ''}
-				</Col>
-				<Col xs={12} className="bold my-1">
-					کد ملی:
-				</Col>
-				<Col xs={12} className="my-1">
-					{user.mrcCode}
-				</Col>
-				<Col xs={12} className="bold my-1">
-					شماره همراه:
-				</Col>
-				<Col xs={12} className="my-1">
-					{user.cellphone}
-				</Col>
-				<Col xs={12} className="bold my-1">
-					ایمیل:
-				</Col>
-				<Col xs={12} className="my-1">
-					{user.mail}
-				</Col>
-			</Row>
+			<StyledCard>
+				<Table
+				columns={columns}
+					dataSource={tickets.map((item, index) => ({...item, row: index + 1}))}
+					scroll={{x: 500}}
+				/>
+			</StyledCard>
 	);
 };
 

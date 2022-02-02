@@ -6,6 +6,8 @@ import { sendUserData, setPassword, login, getUser } from "redux/slices/user/sli
 import { getCode, sendCode } from "redux/slices/code/slice";
 import { handleLogin } from "./handlers/login";
 import { handleGetUser } from "./handlers/user";
+import { handleGetTickets } from "./handlers/tickets";
+import { getTickets } from "redux/slices/tickets/slice";
 
 export function* watcherSaga() {
   yield takeLatest(sendUserData.type, handleRegister);
@@ -14,4 +16,5 @@ export function* watcherSaga() {
   yield takeLatest(setPassword.type, handleSetPassword);
   yield takeLatest(login.type, handleLogin);
   yield takeLatest(getUser.type, handleGetUser);
+  yield takeLatest(getTickets.type, handleGetTickets);
 }

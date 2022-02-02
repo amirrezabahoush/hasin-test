@@ -8,6 +8,7 @@ import { combineReducers } from "redux";
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import user from 'redux/slices/user/slice';
 import notification from 'redux/slices/notification/slice';
+import ticket from 'redux/slices/tickets/slice';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -23,7 +24,8 @@ if (process.env.NODE_ENV === "development") {
 
 const reducers = combineReducers({
   user,
-  notification
+  notification,
+  ticket
 });
 
 const persistConfig = {

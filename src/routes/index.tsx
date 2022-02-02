@@ -7,13 +7,15 @@ import PhoneCheck from 'pages/Auth/PhoneCheck';
 import SetPassword from 'pages/Auth/SetPassword';
 import Login from 'pages/Auth/Login';
 import Profile from 'pages/User/Profile';
+import ChangePassworrd from 'pages/User/ChangePassword';
 import Dashboard from 'pages/Dashboard';
 
 export const PrivateRoutes = {
   element: <MainLayout />,
   children: [
     { path: '/dashboard', element: <Dashboard/> },
-    { path: '/dashboard', element: <Profile/> },
+    { path: '/profile', element: <Profile/> },
+    { path: '/change-password', element: <ChangePassworrd/> },
   ]
 };
 
