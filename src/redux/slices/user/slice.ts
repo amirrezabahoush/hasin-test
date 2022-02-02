@@ -21,6 +21,7 @@ const userSlice = createSlice({
 	reducers: {
 		login(state, action) {},
 		setPassword(state, action) {},
+		changePassword(state, action) {},
 		sendUserData(state, action) {},
 		getUser() {},
 		setUserID(state, action) {
@@ -32,7 +33,6 @@ const userSlice = createSlice({
 	},
 });
 
-export const { sendUserData, setUserID, setPassword, login, setUser, getUser } =
-	userSlice.actions;
+export const { sendUserData, setUserID, setPassword, changePassword, login, setUser, getUser } = userSlice.actions;
 
 export default userSlice.reducer;

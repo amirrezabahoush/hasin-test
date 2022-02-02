@@ -1,12 +1,17 @@
-import { notification } from 'antd';
-import { NotificationProps } from './Notification.props';
+import { notification } from "antd";
+import { NotificationProps } from "./Notification.props";
 
-const Notification: any = (props: NotificationProps) => {
-  const { config, type = 'error', ...rest } = props;
+const Notification = (props: NotificationProps) => {
+	const { config, type = "error", ...rest } = props;
 
-  notification.config(config);
-  
-  return notification[type](rest);
+	notification.config({
+		duration: 5,
+		rtl: true,
+		placement: "topLeft",
+    ...config
+	});
+
+	return notification[type](rest);
 };
 
-export default Notification;
+export default (Notification as any);

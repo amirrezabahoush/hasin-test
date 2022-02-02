@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback } from "react";
-import { Typography, Row, Col } from "antd";
-import { StyledCard } from "./dashboard.styled";
+import { Row, Col } from "antd";
 import { useDispatch } from "react-redux";
 import { getUser } from "redux/slices/user/slice";
 import { useAppSelector } from "redux/store";
@@ -20,20 +19,12 @@ const Dashboard: React.FC = () => {
 	}, [getUserDetails])
 
 	return (
-		<StyledCard
-			title={
-				<Typography.Title level={4} className="text-center">
-					اطلاعات کاربر
-				</Typography.Title>
-			}
-			bordered={false}
-		>
 			<Row>
 				<Col xs={12} className="bold mt-1">
 					ملیت:
 				</Col>
 				<Col xs={12} className="mt-1">
-					{user.userType === 1 ? 'ایرانی' : 'خارجی'}
+					{user.userType ? user.userType === 1 ? 'ایرانی' : 'خارجی' : ''}
 				</Col>
 				<Col xs={12} className="bold my-1">
 					کد ملی:
@@ -54,7 +45,6 @@ const Dashboard: React.FC = () => {
 					{user.mail}
 				</Col>
 			</Row>
-		</StyledCard>
 	);
 };
 

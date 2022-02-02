@@ -6,12 +6,14 @@ import SignUp from 'pages/Auth/SignUp';
 import PhoneCheck from 'pages/Auth/PhoneCheck';
 import SetPassword from 'pages/Auth/SetPassword';
 import Login from 'pages/Auth/Login';
+import Profile from 'pages/User/Profile';
 import Dashboard from 'pages/Dashboard';
 
 export const PrivateRoutes = {
   element: <MainLayout />,
   children: [
     { path: '/dashboard', element: <Dashboard/> },
+    { path: '/dashboard', element: <Profile/> },
   ]
 };
 

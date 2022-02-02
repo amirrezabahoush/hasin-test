@@ -25,7 +25,6 @@ const AuthForm: React.FC<{
 				className="form-wrapper"
 			>
 				{props.children}
-
 				<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
 					<Button type="primary" htmlType="submit">
 						{props.submitText}

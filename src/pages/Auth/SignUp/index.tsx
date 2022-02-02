@@ -18,12 +18,7 @@ const Login: React.FC = () => {
 			const notificationProps = {
 				type: "success",
 				description: notification.message,
-				key: "message",
-				config: {
-					duration: 5,
-					rtl: true,
-					placement: "topLeft",
-				},
+				key: "message"
 			};
 			Notification(notificationProps);
 			navigate("/signup/check-phone");

@@ -16,12 +16,7 @@ export function* handleLogin(action: any) {
 		const notificationProps = {
 			type: "success",
 			description: "ورود موفقیت آمیز",
-			key: "message",
-			config: {
-				duration: 5,
-				rtl: true,
-				placement: "topLeft",
-			},
+			key: "message"
 		};
 		Notification(notificationProps);
 	} catch (error) {
