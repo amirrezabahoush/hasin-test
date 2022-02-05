@@ -26,8 +26,6 @@ const Dashboard: React.FC = () => {
 		onGetTickets();
 	}, [onGetTickets]);
 
-	const onEdit = (record: TicketTypes) => {};
-
 	const onRemove = async () => {
 		if (selected) {
 			setIsLoading(true);
@@ -79,15 +77,11 @@ const Dashboard: React.FC = () => {
 		},
 		{
 			key: "action",
-			width: "150px",
 			render: (item: TicketTypes[], record: TicketTypes) => {
 				return (
 					<>
 						<Row justify="center" gutter={4}>
-							{/* <Col xs={12}>
-								<EditOutlined onClick={() => onEdit(record)}/>
-							</Col> */}
-							<Col xs={12}>
+							<Col xs={24}>
 								<DeleteOutlined
 									onClick={() => {
 										setSelected(record);
@@ -128,7 +122,7 @@ const Dashboard: React.FC = () => {
 
 			<Row justify="end" className="mb-1">
 				<Col>
-					‌‌<Button type="primary">ثبت تیکت جدید</Button>
+					‌‌<Button type="primary" onClick={() => setIsVisible(true)}>ثبت تیکت جدید</Button>
 				</Col>
 			</Row>
 
