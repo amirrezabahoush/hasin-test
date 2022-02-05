@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "redux/store";
 import { AuthForm } from "components/container";
 import { SetPasswordValues } from "./SetPassword.props";
+import Regex from "utils/regex";;
 
 const SetPassword: React.FC = () => {
 	const navigate = useNavigate();
@@ -27,18 +28,26 @@ const SetPassword: React.FC = () => {
 				name="password"
 				rules={[
 					{ required: true, message: "رمز عبور نمی تواند خالی باشد" },
+					{
+						pattern: Regex.password,
+						message: 'رمز عبور باید شامل 6 کاراکتر عددی باشد',
+					},
 				]}
 			>
-				<Input />
+				<Input.Password />
 			</Form.Item>
 			<Form.Item
 				label="تکرار رمز عبور را وارد کنید"
 				name="repeatPassword"
 				rules={[
 					{ required: true, message: "تکرار رمز عبور نمی تواند خالی باشد" },
+					{
+						pattern: Regex.password,
+						message: 'رمز عبور باید شامل 6 کاراکتر عددی باشد',
+					},
 				]}
 			>
-				<Input />
+				<Input.Password />
 			</Form.Item>
 		</AuthForm>
 	);

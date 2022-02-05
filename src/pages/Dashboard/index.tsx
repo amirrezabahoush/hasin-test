@@ -23,43 +23,43 @@ const Dashboard: React.FC = () => {
 		{
 			key: 'row',
 			dataIndex: 'row',
-			text: 'ردیف'
+			title: 'ردیف'
 		},
 		{
 			key: 'messageStatus',
 			dataIndex: 'messageStatus',
-			text: 'وضعیت'
+			title: 'وضعیت'
 		},
 		{
 			key: 'message',
 			dataIndex: 'message',
-			text: 'پیام'
+			title: 'پیام'
 		},
 		{
 			key: 'creationDate',
 			dataIndex: 'creationDate',
-			text: 'تاریخ ایجاد'
+			title: 'تاریخ ایجاد'
 		},
 		{
 			key: 'lastUpdate',
 			dataIndex: 'lastUpdate',
-			text: 'آخرین به روز رسانی'
+			title: 'آخرین به روز رسانی'
 		},
 		{
 			key: 'addressLink',
 			dataIndex: 'addressLink',
-			text: 'لینک'
+			title: 'لینک'
 		},
 	]
 
 	return (
-			<StyledCard>
-				<Table
+		<StyledCard>
+			<Table
 				columns={columns}
-					dataSource={tickets.map((item, index) => ({...item, row: index + 1}))}
-					scroll={{x: 500}}
-				/>
-			</StyledCard>
+				dataSource={tickets.map((item, index) => ({ ...item, row: index + 1 }))}
+				scroll={{ x: 500 }}
+			/>
+		</StyledCard>
 	);
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, Typography } from "antd";
+import { Row, Col, Form, Button, Typography } from "antd";
 import { StyledCard } from "./AuthForm.styled";
 
 const AuthForm: React.FC<{
@@ -23,13 +23,16 @@ const AuthForm: React.FC<{
 				onFinish={props.onFinish}
 				autoComplete="off"
 				className="form-wrapper"
+				size="large"
 			>
 				{props.children}
-				<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-					<Button type="primary" htmlType="submit">
-						{props.submitText}
-					</Button>
-				</Form.Item>
+				<Row className="text-center">
+					<Col xs={24} xl={12} className="mt-2 mx-auto">
+						<Button type="primary" htmlType="submit" className="w-100">
+							{props.submitText}
+						</Button>
+					</Col>
+				</Row>
 			</Form>
 		</StyledCard>
 	);

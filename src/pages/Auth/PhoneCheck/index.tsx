@@ -55,7 +55,7 @@ const Login: React.FC = () => {
 				>
 					<Input
 						addonAfter={
-							<Button htmlType="submit" disabled={disabled}>
+							<Button htmlType="submit" disabled={disabled} className="bg-transparent">
 								<ReloadOutlined onClick={onResend} />
 							</Button>
 						}

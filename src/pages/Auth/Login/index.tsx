@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "redux/slices/user/slice";
 import { useAppSelector } from "redux/store";
-import { AuthForm } from "components/container";
+import { AuthForm, Notification } from "components/container";
 import { LoginValues } from "./Login.props";
 import Regex from "utils/regex";
 
@@ -19,7 +19,15 @@ const Login: React.FC = () => {
 		}
 	}, [notification, navigate]);
 
-	const onFinish = (values: LoginValues) => {
+	const onFinish = (values: LoginValues) => {		
+		if (values.password.length <= 6) {
+			const notificationProps = {
+				type: "error",
+				description: 'رمز عبور حداقل شامل 6 کاراکتر باید باشد',
+				key: "message"
+			};
+			Notification(notificationProps);
+		}
 		dispatch(login(values));
 	};
 
@@ -36,16 +44,20 @@ const Login: React.FC = () => {
 					},
 				]}
 			>
-				<Input type="number" />
+				<Input type="text" autoComplete="off" />
 			</Form.Item>
 			<Form.Item
 				label="رمز عبور"
 				name="password"
 				rules={[
-					{ required: true, message: "ورود رمز عبور الزامی است" }
+					{ required: true, message: "ورود رمز عبور الزامی است" },
+					{
+						pattern: Regex.password,
+						message: 'رمز عبور باید شامل 6 کاراکتر عددی باشد',
+					},
 				]}
 			>
-				<Input.Password />
+				<Input.Password autoComplete="off"/>
 			</Form.Item>
 			حساب کاربری ندارید؟ <NavLink to="/signup">ثبت نام کنید</NavLink>
 		</AuthForm>

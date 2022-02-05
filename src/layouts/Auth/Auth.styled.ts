@@ -4,6 +4,12 @@ import { Card } from "antd";
 export const StyledDiv = styled.div`
   width: 100vw;
   height: 100vh;
+	position: relative;
+  padding: 25px 0;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
 `;
 export const StyledWrapper = styled.div`
 	height: 100vh;

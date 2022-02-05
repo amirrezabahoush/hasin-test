@@ -10,6 +10,11 @@
   max-zoom: 0.9;
 }
 
+@font-face {
+  font-family: "Dana-FaNum-Regular";
+  src: url("../fonts/Dana-FaNum-Regular.ttf");
+}
+
 // CSS Resets
 
 html {
@@ -17,6 +22,7 @@ html {
   min-height: 100%;
   margin: 0;
   padding: 0;
+
   body {
     margin: 0;
     padding: 0;
@@ -24,12 +30,20 @@ html {
     min-height: 100%;
     overflow-x: hidden;
     font-size: 14px;
-    background-color: #f7f7f7;
+    background: transparent url('./../images/2314950.jpg') no-repeat center;
+    &::after{
+      position: absolute;
+      left: 0; right: 0; top: 0; bottom: 0;
+      content: '';
+      background-color: rgba(0,0,0,0.5);
+      z-index: -1;
+    }
 
     * {
       padding: 0;
       outline: none;
       font-size: 14px;
+      font-family: "Dana-FaNum-Regular";
     }
   }
 }
@@ -113,19 +127,34 @@ i {
 }
 
 //spaces
+.mb-0 {
+  margin-bottom: 0;
+}
+
 .my-1 {
   margin: 8px 0px;
+}
+
+.mt-2 {
+  margin-top: 16px !important;
 }
 
 .mt-1 {
   margin-top: 8px;
 }
 
+.mx-auto {
+  margin: 0 auto;
+}
+
 //sizes
 .h-100 {
   height: 100vh;
 }
-.w-100{width: 100%;}
+
+.w-100 {
+  width: 100%;
+}
 
 //displays
 .d-flex {
@@ -145,22 +174,29 @@ i {
   font-weight: bold;
 }
 
-.form-wrapper{
+.form-wrapper {
   text-align: right;
-  input{
+
+  input {
     width: 100%;
     border-radius: 3px;
   }
-  .ant-form-item-label{
+
+  .ant-form-item-label {
     padding: 0;
     direction: rtl;
     text-align: right;
   }
-  .ant-input-group-addon{
-    .ant-btn{
+
+  .ant-input-group-addon {
+    .ant-btn {
       border: 0;
       padding: 0;
       height: 30px;
     }
+  }
+
+  .bg-transparent {
+    background-color: transparent;
   }
 }
