@@ -9,7 +9,7 @@ const MainLayout: React.FC = () => {
 	return (
 		<Layout className="layout">
 			<Header>
-				<Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
+				<Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
 					<Menu.Item key="1">
 						<NavLink to={"/dashboard"}>داشبورد</NavLink>
 					</Menu.Item>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Navigate } from 'react-router-dom';
 import MainLayout from './../layouts/Main';
 import AuthLayout from './../layouts/Auth';
@@ -8,7 +7,7 @@ import SetPassword from 'pages/Auth/SetPassword';
 import Login from 'pages/Auth/Login';
 import Profile from 'pages/User/Profile';
 import ChangePassworrd from 'pages/User/ChangePassword';
-import Dashboard from 'pages/Dashboard';
+import Dashboard from 'pages/Ticket';
 
 export const PrivateRoutes = {
   element: <MainLayout />,
