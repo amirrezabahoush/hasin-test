@@ -31,11 +31,15 @@ html {
     overflow-x: hidden;
     font-size: 14px;
     background: transparent url('./../images/2314950.jpg') no-repeat center;
-    &::after{
+
+    &::after {
       position: absolute;
-      left: 0; right: 0; top: 0; bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
       content: '';
-      background-color: rgba(0,0,0,0.5);
+      background-color: rgba(0, 0, 0, 0.5);
       z-index: -1;
     }
 
@@ -131,6 +135,10 @@ i {
   margin-bottom: 0;
 }
 
+.mb-1 {
+  margin-bottom: 8px;
+}
+
 .my-1 {
   margin: 8px 0px;
 }
@@ -172,6 +180,9 @@ i {
 
 .bold {
   font-weight: bold;
+}
+.page-title{
+  font-size: 16px !important;
 }
 
 .form-wrapper {

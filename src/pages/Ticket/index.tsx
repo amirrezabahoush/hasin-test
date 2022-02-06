@@ -77,6 +77,7 @@ const Dashboard: React.FC = () => {
 		},
 		{
 			key: "action",
+			title: "عملیات",
 			render: (item: TicketTypes[], record: TicketTypes) => {
 				return (
 					<>
@@ -109,14 +110,19 @@ const Dashboard: React.FC = () => {
 			onGetTickets();
 		} finally {
 			setIsLoading(false);
+			setIsVisible(false);
 		}
+	};
+
+	const handleCancel = () => {
+		setIsVisible(false);
 	};
 
 	return (
 		<StyledCard>
 			<Row justify="start" className="mb-1">
-				<Col>
-					<Typography.Title>لیست تیکت های ثبت شده</Typography.Title>
+				<Col xs={24}>
+					<Typography.Title className="page-title">لیست تیکت های ثبت شده</Typography.Title>
 				</Col>
 			</Row>
 
@@ -131,13 +137,18 @@ const Dashboard: React.FC = () => {
 				dataSource={tickets.map((item, index) => ({ ...item, row: index + 1 }))}
 				scroll={{ x: 500 }}
 			/>
-			<Modal visible={isVisible} title="افزودن تیکت جدید" closable>
-				<Form onFinish={onSubmit}>
-					<Form.Item name="link_address">
+			<Modal visible={isVisible} title="افزودن تیکت جدید" closable onCancel={handleCancel}>
+				<Form
+					className="form-wrapper"
+					onFinish={onSubmit}
+					labelCol={{ span: 24 }}
+					wrapperCol={{ span: 24 }}
+				>
+					<Form.Item name="link_address" label="آدرس لینک">
 						<Input />
 					</Form.Item>
-					<Form.Item name="message">
-						<Input />
+					<Form.Item name="message" label="پیام">
+						<Input.TextArea rows={4} />
 					</Form.Item>
 					<Button type="primary" htmlType="submit" loading={isLoading}>
 						ثبت تیکت

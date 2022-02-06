@@ -23,7 +23,7 @@ const Login: React.FC = () => {
 		if (values.password.length <= 6) {
 			const notificationProps = {
 				type: "error",
-				description: 'رمز عبور حداقل شامل 6 کاراکتر باید باشد',
+				description: 'رمز عبور باید شامل 6 کاراکتر باشد',
 				key: "message"
 			};
 			Notification(notificationProps);
@@ -50,11 +50,7 @@ const Login: React.FC = () => {
 				label="رمز عبور"
 				name="password"
 				rules={[
-					{ required: true, message: "ورود رمز عبور الزامی است" },
-					{
-						pattern: Regex.password,
-						message: 'رمز عبور باید شامل 6 کاراکتر عددی باشد',
-					},
+					{ required: true, message: "ورود رمز عبور الزامی است" }
 				]}
 			>
 				<Input.Password autoComplete="off"/>
