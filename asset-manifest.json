@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ticketing/static/css/main.6a999004.css",
-    "main.js": "/ticketing/static/js/main.fb76fe00.js",
+    "main.js": "/ticketing/static/js/main.56fb1daa.js",
     "static/media/2314950.jpg": "/ticketing/static/media/2314950.b926761fd05d4f5f5e0b.jpg",
     "static/media/Dana-FaNum-Regular.ttf": "/ticketing/static/media/Dana-FaNum-Regular.dad2b4ad36124ee30c05.ttf",
     "index.html": "/ticketing/index.html",
     "main.6a999004.css.map": "/ticketing/static/css/main.6a999004.css.map",
-    "main.fb76fe00.js.map": "/ticketing/static/js/main.fb76fe00.js.map"
+    "main.56fb1daa.js.map": "/ticketing/static/js/main.56fb1daa.js.map"
   },
   "entrypoints": [
     "static/css/main.6a999004.css",
-    "static/js/main.fb76fe00.js"
+    "static/js/main.56fb1daa.js"
   ]
 }
