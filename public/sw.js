@@ -3,7 +3,7 @@ self.addEventListener('install', (event) => {
   console.log('[service worker]: Instaling...', event);
   event.waitUntil(caches.open('statics').then(cache => {
     console.log('[service worker]: Precaching App Shell');
-    cache.add('../src/index.tsx');
+    // cache.add('../src/index.tsx');
   }))
   self.skipWaiting();
 });
