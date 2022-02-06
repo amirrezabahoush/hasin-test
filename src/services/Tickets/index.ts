@@ -6,7 +6,7 @@ export const getAllTickets = () => {
 }
 
 export const addTicket = (data: FormValues) => {
-  return api({url: 'dashboard/crm/add', method: 'POST', data, headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }})
+  return api({url: 'dashboard/crm/add', method: 'POST', data: {messageType: 0, ...data}, headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }})
 }
 
 export const removeTicket = (suggestionId: number) => {
